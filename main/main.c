@@ -209,11 +209,6 @@ void main_process(void)
 		}
 	}
 }
-void test(void)
-{
-	printf("ASD\n");
-}
-
 int main()
 {
 	wiringPiSetup();
@@ -242,10 +237,8 @@ int main()
 	int sig;
 	while (1)
 	{
-		sig = digitalRead(SWITCH);
-		if (sig == 1)
-		{
-			main_process();
-		}
+		pass
 	}
 }
+// Main interrupt
+wiringPiISR(SWITCH, INT_EDGE_FALLING, &main_process)
